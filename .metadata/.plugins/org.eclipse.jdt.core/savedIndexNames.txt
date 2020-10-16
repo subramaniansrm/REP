@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+D:\GIT_WorkSpace\.metadata\.plugins\org.eclipse.jdt.core
