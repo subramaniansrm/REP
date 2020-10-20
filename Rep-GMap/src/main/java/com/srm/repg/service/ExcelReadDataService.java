@@ -96,11 +96,9 @@ public class ExcelReadDataService {
 					 realEstateDTO.setColorCode("DarkGreen"); 
 				 }
 				 List<RealEstateDetailsDTO>listDetails=new ArrayList<>(); 
-				 int rowinc=0;
 				 for (Row row: sheet) {
-					 Row row1 = sheet.getRow(0);
 					
-						// it will give you count of row which is used or filled
+						/*// it will give you count of row which is used or filled
 						short lastcolumnused = row.getLastCellNum();
 						int colnum = 0;
 						for (int i = 0; i < lastcolumnused; i++) {
@@ -109,26 +107,89 @@ public class ExcelReadDataService {
 						colnum = i;
 						break;
 						}
-						}
+						}*/
 					 RealEstateDetailsDTO realEstateDetailsDTO=new RealEstateDetailsDTO();
 			        	if(row.getRowNum()>0){
 			        		
-			        	int ii=0;
 			            for(int i=0;i<=27;i++) {
+			            	 String cellValue = dataFormatter.formatCellValue(row.getCell(i));
+			            	if(i==2){
+			            		realEstateDetailsDTO.setPropertyName(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==3){
+			            		realEstateDetailsDTO.setPrice(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==4){
+			            		realEstateDetailsDTO.setSalesAmount(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==5){
+			            		realEstateDetailsDTO.setPrice1(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
 			            	
-			                if(i==colnum){
-			                	 String cellValue = dataFormatter.formatCellValue(row.getCell(i));
-			                	realEstateDetailsDTO.setAddress(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
-			                }
+			            	if(i==6){
+			            		realEstateDetailsDTO.setOccuipedArea(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==7){
+			            		realEstateDetailsDTO.setLandArea(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==8){
+			            		realEstateDetailsDTO.setUnitPrice(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==9){
+			            		realEstateDetailsDTO.setBuildingArea(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==10){
+			            		realEstateDetailsDTO.setUnitPrice1(new String(cellValue.getBytes(StandardCharsets.UTF_8)));	
+			            	}
+			            	if(i==11){
+			            		realEstateDetailsDTO.setPrefectures(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==12){
+			            		realEstateDetailsDTO.setLocation1(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==13){
+			            		realEstateDetailsDTO.setLocation2(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==14){
+			            		realEstateDetailsDTO.setLocation3(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	realEstateDetailsDTO.setAddress(realEstateDetailsDTO.getPrefectures()+","+realEstateDetailsDTO.getLocation1()+","+realEstateDetailsDTO.getLocation2()+","+realEstateDetailsDTO.getLocation3());
+			            	if(i==15){
+			            		realEstateDetailsDTO.setAlongtheLine(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==16){
+			            		realEstateDetailsDTO.setStation(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==17){
+			            		realEstateDetailsDTO.setTraffic(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==18){
+			            		realEstateDetailsDTO.setFloorPlan(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==19){
+			            		realEstateDetailsDTO.setAge(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==20){
+			            		realEstateDetailsDTO.setBuildingCoverage(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==21){
+			            		realEstateDetailsDTO.setFloorAreaRatio(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==22){
+			            		realEstateDetailsDTO.setRent(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
+			            	if(i==23){
+			            		realEstateDetailsDTO.setYield(new String(cellValue.getBytes(StandardCharsets.UTF_8)));
+			            	}
 			                if(i==26){
-			                	String cellValue = dataFormatter.formatCellValue(row.getCell(26));
-			                	if(!cellValue.isEmpty())
-			                	realEstateDetailsDTO.setLatitude(cellValue);
+			                	String cellValues = dataFormatter.formatCellValue(row.getCell(26));
+			                	if(!cellValues.isEmpty())
+			                	realEstateDetailsDTO.setLatitude(cellValues);
 			                }
 			                if(i==27){
-			                	String cellValue = dataFormatter.formatCellValue(row.getCell(27));
-			                	if(!cellValue.isEmpty())
-			                	realEstateDetailsDTO.setLongitude(cellValue);
+			                	String cellValue1 = dataFormatter.formatCellValue(row.getCell(27));
+			                	if(!cellValue1.isEmpty())
+			                	realEstateDetailsDTO.setLongitude(cellValue1);
 			                	 if(realEstateDetailsDTO.getLongitude()==null && realEstateDetailsDTO.getLatitude()==null){
 						                if(realEstateDetailsDTO.getAddress()!=null ){
 					                		String[]latLong=getLatLongPositions(realEstateDetailsDTO.getAddress());

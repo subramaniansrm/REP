@@ -15,11 +15,13 @@ public class RealEstateDetailsDTO implements Serializable{
 	
 	private String propertyName;
 	
-	private String salesAmount;
-	
 	private String price;
 	
-	private String address;
+	private String salesAmount;
+	
+	private String price1;
+	
+	private String occuipedArea;
 	
 	private String landArea;
 	
@@ -29,13 +31,29 @@ public class RealEstateDetailsDTO implements Serializable{
 	
 	private String unitPrice1;
 	
-	private String stationArea;
+	private String prefectures;
+	
+	private String location1;
+	
+	private String location2;
+	
+	private String location3;
+	
+	private String address;
+	
+	private String alongtheLine;
+	
+	private String station;
 	
 	private String traffic;
 	
-	private double constructionRate;
+	private String floorPlan;
 	
-	private double volumeRate;
+	private String age;
+	
+	private String buildingCoverage;
+	
+	private String floorAreaRatio;
 	
 	private String rent;
 	
@@ -74,20 +92,6 @@ public class RealEstateDetailsDTO implements Serializable{
 	}
 
 	/**
-	 * @return the salesAmount
-	 */
-	public String getSalesAmount() {
-		return salesAmount;
-	}
-
-	/**
-	 * @param salesAmount the salesAmount to set
-	 */
-	public void setSalesAmount(String salesAmount) {
-		this.salesAmount = salesAmount;
-	}
-
-	/**
 	 * @return the price
 	 */
 	public String getPrice() {
@@ -102,17 +106,45 @@ public class RealEstateDetailsDTO implements Serializable{
 	}
 
 	/**
-	 * @return the address
+	 * @return the salesAmount
 	 */
-	public String getAddress() {
-		return address;
+	public String getSalesAmount() {
+		return salesAmount;
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param salesAmount the salesAmount to set
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setSalesAmount(String salesAmount) {
+		this.salesAmount = salesAmount;
+	}
+
+	/**
+	 * @return the price1
+	 */
+	public String getPrice1() {
+		return price1;
+	}
+
+	/**
+	 * @param price1 the price1 to set
+	 */
+	public void setPrice1(String price1) {
+		this.price1 = price1;
+	}
+
+	/**
+	 * @return the occuipedArea
+	 */
+	public String getOccuipedArea() {
+		return occuipedArea;
+	}
+
+	/**
+	 * @param occuipedArea the occuipedArea to set
+	 */
+	public void setOccuipedArea(String occuipedArea) {
+		this.occuipedArea = occuipedArea;
 	}
 
 	/**
@@ -172,17 +204,45 @@ public class RealEstateDetailsDTO implements Serializable{
 	}
 
 	/**
-	 * @return the stationArea
+	 * @return the address
 	 */
-	public String getStationArea() {
-		return stationArea;
+	public String getAddress() {
+		return address;
 	}
 
 	/**
-	 * @param stationArea the stationArea to set
+	 * @param address the address to set
 	 */
-	public void setStationArea(String stationArea) {
-		this.stationArea = stationArea;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	/**
+	 * @return the alongtheLine
+	 */
+	public String getAlongtheLine() {
+		return alongtheLine;
+	}
+
+	/**
+	 * @param alongtheLine the alongtheLine to set
+	 */
+	public void setAlongtheLine(String alongtheLine) {
+		this.alongtheLine = alongtheLine;
+	}
+
+	/**
+	 * @return the station
+	 */
+	public String getStation() {
+		return station;
+	}
+
+	/**
+	 * @param station the station to set
+	 */
+	public void setStation(String station) {
+		this.station = station;
 	}
 
 	/**
@@ -200,31 +260,59 @@ public class RealEstateDetailsDTO implements Serializable{
 	}
 
 	/**
-	 * @return the constructionRate
+	 * @return the floorPlan
 	 */
-	public double getConstructionRate() {
-		return constructionRate;
+	public String getFloorPlan() {
+		return floorPlan;
 	}
 
 	/**
-	 * @param constructionRate the constructionRate to set
+	 * @param floorPlan the floorPlan to set
 	 */
-	public void setConstructionRate(double constructionRate) {
-		this.constructionRate = constructionRate;
+	public void setFloorPlan(String floorPlan) {
+		this.floorPlan = floorPlan;
 	}
 
 	/**
-	 * @return the volumeRate
+	 * @return the age
 	 */
-	public double getVolumeRate() {
-		return volumeRate;
+	public String getAge() {
+		return age;
 	}
 
 	/**
-	 * @param volumeRate the volumeRate to set
+	 * @param age the age to set
 	 */
-	public void setVolumeRate(double volumeRate) {
-		this.volumeRate = volumeRate;
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	/**
+	 * @return the buildingCoverage
+	 */
+	public String getBuildingCoverage() {
+		return buildingCoverage;
+	}
+
+	/**
+	 * @param buildingCoverage the buildingCoverage to set
+	 */
+	public void setBuildingCoverage(String buildingCoverage) {
+		this.buildingCoverage = buildingCoverage;
+	}
+
+	/**
+	 * @return the floorAreaRatio
+	 */
+	public String getFloorAreaRatio() {
+		return floorAreaRatio;
+	}
+
+	/**
+	 * @param floorAreaRatio the floorAreaRatio to set
+	 */
+	public void setFloorAreaRatio(String floorAreaRatio) {
+		this.floorAreaRatio = floorAreaRatio;
 	}
 
 	/**
@@ -282,7 +370,62 @@ public class RealEstateDetailsDTO implements Serializable{
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-	
-	
+
+	/**
+	 * @return the prefectures
+	 */
+	public String getPrefectures() {
+		return prefectures;
+	}
+
+	/**
+	 * @param prefectures the prefectures to set
+	 */
+	public void setPrefectures(String prefectures) {
+		this.prefectures = prefectures;
+	}
+
+	/**
+	 * @return the location1
+	 */
+	public String getLocation1() {
+		return location1;
+	}
+
+	/**
+	 * @param location1 the location1 to set
+	 */
+	public void setLocation1(String location1) {
+		this.location1 = location1;
+	}
+
+	/**
+	 * @return the location2
+	 */
+	public String getLocation2() {
+		return location2;
+	}
+
+	/**
+	 * @param location2 the location2 to set
+	 */
+	public void setLocation2(String location2) {
+		this.location2 = location2;
+	}
+
+	/**
+	 * @return the location3
+	 */
+	public String getLocation3() {
+		return location3;
+	}
+
+	/**
+	 * @param location3 the location3 to set
+	 */
+	public void setLocation3(String location3) {
+		this.location3 = location3;
+	}
+
 
 }

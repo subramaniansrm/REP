@@ -53,11 +53,13 @@ public class ExcelReadController {
 	}
 
 	@RequestMapping(value = "/address/readAddress", method = RequestMethod.POST)
-	public String readAddress(@ModelAttribute("fileParams") FileParams param, ModelMap model,BindingResult result) {
+	public String readAddress(@ModelAttribute("fileParams") FileParams param, ModelMap model,BindingResult result,RedirectAttributes redirectAttributes) {
 		// Print input date
 	    boolean error = false;
 	    if(param.getDateVal().isEmpty()){
 	    	result.rejectValue("dateVal", "error.firstName");
+	    	redirectAttributes.addFlashAttribute("message",
+	                "Date Should not be empty");
 	        error = true;
 	    }
 		return "redirect:/address/list/" + param.getDateVal() + "";
@@ -65,11 +67,12 @@ public class ExcelReadController {
 
 	
 	@PostMapping("/upload") // //new annotation since 4.3
-	public String fileUpload(@RequestParam("file") MultipartFile file,@ModelAttribute("fileParams") FileParams param, RedirectAttributes redirectAttributes,BindingResult validationResult) {
+	public String fileUpload(@RequestParam("files") MultipartFile[] files,@ModelAttribute("fileParams") FileParams param, RedirectAttributes redirectAttributes,BindingResult validationResult) {
 
-		if (file.isEmpty()) {
+		
+	/*	if (file.isEmpty()) {
 			redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-			/*ImageIcon icon = new ImageIcon("src/main/webapp/resources/assets/images/logo.png"); //object for displaying a custom icon
+			ImageIcon icon = new ImageIcon("src/main/webapp/resources/assets/images/logo.png"); //object for displaying a custom icon
 		    final JPanel panel = new JPanel(); // the object for the pop-up
 		    int test_for_commit_to_challenge = JOptionPane.showConfirmDialog(panel, "Do you want to proceed with the challenge?", "WARNING!",
 		    		JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, icon); //this displays the pop-up and returns an integer depending on what the user clicks
@@ -78,7 +81,7 @@ public class ExcelReadController {
 		    		//System.out.println("cancelled");
 		    	return "redirect:uploadAdd";
 		    }
-			*/
+			
 		}
 		try {
 			String outFilePath = uploadPath+param.getDateVal()+"/";
@@ -97,8 +100,28 @@ public class ExcelReadController {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
+		 for(MultipartFile file:files){
+			 if(file.isEmpty()){
+			 redirectAttributes.addFlashAttribute("message",
+		                "File Should not be empty");
+			 }
 
+			 try{
+			 String outFilePath = uploadPath+param.getDateVal()+"/";
+				File directory = new File(outFilePath);
+				if (!directory.exists()) {
+					directory.mkdirs();
+				} else {
+				}
+				// Get the file and save it somewhere
+				byte[] bytes = file.getBytes();
+				Path path = Paths.get(outFilePath + file.getOriginalFilename());
+				Files.write(path, bytes); 
+			 }catch(Exception e){
+				 e.printStackTrace();
+			 }
+		 }
 		return "redirect:/uploadstatus";
 	}
 	

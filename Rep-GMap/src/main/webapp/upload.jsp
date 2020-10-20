@@ -17,18 +17,21 @@
   </head>
 
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
    <body>
       <h2>Real Estate Upload Data</h2>
-      <form:form method = "POST" action = "${pageContext.request.contextPath}/upload" enctype="multipart/form-data"  onsubmit="return confirm('Are you sure?') ? true : false;">
+      <form:form method = "POST" action = "${pageContext.request.contextPath}/upload" enctype="multipart/form-data"  >
       `<input type="date" id="start" name="dateVal"
        value="" pattern="yyyy-MM-dd"
        min="2020-01-01" max="2020-12-31">
             <br/> <br/>
             
-         <input type="file" name="file" /><br/><br/>
+         <input type="file" name="files"  multiple/><br/><br/>
     <input type="submit" value="Submit" />
       </form:form>
+       <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
    </body>
    
    
